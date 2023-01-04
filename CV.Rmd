@@ -1,0 +1,22 @@
+---
+title: "Jan Przybylski"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Wykształcenie
+
+*   Gimnazjum nr. 2 w Luboniu __2010-2013__
+*   VI Liceum Ogólnokształcące im. Ignacego Jana Paderewskiego __2013-2016__
+*   Uniwersytet im. Adama Mickiewicza w Poznaniu __2016-2021__
+
+
+
+## Doświadczenie zawodowe
+
+* Sealcode JavaScript developer __2016-2017__
+* Codelab C# developer __2018-2019__
+* Leetcode Java developer __2019-2020__

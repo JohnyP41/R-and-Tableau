@@ -1,0 +1,77 @@
+---
+title: "Rozmiary diamentów"
+date: 2016-08-25
+output: html_document
+---
+
+```{r setup, include = FALSE}
+library(ggplot2)
+library(dplyr)
+
+smaller <- diamonds %>% 
+  filter(carat <= 2.5)
+```
+
+Mamy dane o `r nrow(diamonds)` diamentach. Tylko 
+`r nrow(diamonds) - nrow(smaller)` diamentów jest większych niż 2,5 karata. 
+Poniżej przedstawiony jest rozkład pozostałych:
+
+```{r, echo = FALSE}
+smaller %>% 
+  ggplot(aes(carat)) + 
+  geom_freqpoly(binwidth = 0.01)
+```
+
+
+Widać że najwiecej jest diamentów o masie 0,4 karata.
+Potem następne w kolejności są diamenty o masie 1 karata.
+Potem o masie 1,5 karata. Potem o masie 2 karatów.
+Liczebność diamentów maleje gdy masa diamentów rośnie.
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE
+)
+```
+
+```{r cache=FALSE}
+knitr::read_chunk('obliczenia.R')
+```
+
+
+Sekcja 1
+
+```{r sekcja-1}
+```
+
+
+Sekcja 2
+```{r sekcja-2}
+```
+
+Ładnie sformatowany tekst
+```{r}
+comma <- function(x) format(x, digits = 2, big.mark = ",")
+```
+Wczoraj widzialem na niebie `r comma(123123)` gwiazd. Nasz zbiór ma `r comma(9999)` obserwacji.
+
+Mamy dane o `r comma(nrow(diamonds))` diamentach. Tylko `r comma(nrow(diamonds) - nrow(smaller))` diamentów jest większych niż 2,5 karata.
+
+
+```{r a,cache = TRUE}
+lubridate::now()
+```
+
+
+```{r b,cache = TRUE,dependson = "a"}
+lubridate::now()
+```
+
+```{r c,cache = TRUE,dependson = "a"}
+lubridate::now()
+```
+
+```{r d,cache = TRUE,dependson = "b",dependson = "c"}
+lubridate::now()
+```
+Dobrze zrozumiałem to zagadnienie :)

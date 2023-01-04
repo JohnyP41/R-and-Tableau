@@ -1,0 +1,81 @@
+---
+title: "Zbiory danych"
+output: flexdashboard::flex_dashboard
+---
+
+
+```{r setup, include = FALSE}
+#install.packages(c("flexdashboard", "DT"))
+library(DT)
+library(ggplot2)
+library(dplyr)
+knitr::opts_chunk$set(fig.width = 5, fig.asp = 1/2)
+```
+
+
+# iris
+
+Column {data-width=600}
+-------------------------------------
+
+### Gatunki
+
+```{r}
+ggplot(iris, aes(y=Sepal.Width, x=Sepal.Length,color=Species)) + 
+geom_point()
+```
+
+Column {data-width=400}
+-------------------------------------
+
+### Szerokość płatka (1)
+```{r}
+ggplot(iris, aes(x=Sepal.Width,fill=Species)) + 
+geom_histogram(binwidth = 0.2)+
+labs(
+    x="szerokość płatka",
+    y="częstość",
+    fill = "gatunki:"
+  )
+```
+
+### Szerokość płatka (2)
+```{r}
+ggplot(iris, aes(y=Sepal.Width, x=Sepal.Length,color=Petal.Width)) + 
+geom_point()
+```
+
+
+# diamonds
+
+## Kolumna 1
+
+### Karaty (zmienna carat)
+
+```{r}
+ggplot(diamonds, aes(carat)) + geom_histogram(binwidth = 0.1)
+```
+
+### Szlif (zmienna cut)
+
+```{r}
+ggplot(diamonds, aes(cut)) + geom_bar()
+```
+
+### Kolor (zmienna color)
+
+```{r}
+ggplot(diamonds, aes(color)) + geom_bar()
+```
+
+## Kolumna 2
+
+### Największe diamenty
+
+```{r}
+diamonds %>% 
+  arrange(desc(carat)) %>% 
+  head(100) %>% 
+  select(carat, cut, color, price) %>% 
+  DT::datatable()
+```
